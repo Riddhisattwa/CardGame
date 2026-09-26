@@ -1,0 +1,45 @@
+Lets start defining classes:
+
+1. Deck - contains 52 cards
+    - List of cards
+2. Enum - 4 suits
+    - Suits = Diamond, Spades, Hearts, Clubs
+3. Rank
+    - ACE(1,14), 2 to 10, J,Q,K
+4. Color
+    - RED, BLACK
+5. Hand - contains N cards where N depends on which game is getting played.
+    - List of cards
+6. Dealer - Shuffle the cards in Deck, provide cards to hands, keep the remaining cards on deck, can show a card
+
+Card class
+final state - we cannot change the card rank or suit or color.
+readonly Suits suit, readonly Rank rank, readonly Color color 
+
+sealed Deck class- We dont want a separate inherited Deck Class. There can be only 1 deck.
+state - List<Card> cards - 52 in length
+behavior - updateStackOfCards() - will update the cards after shuffling, giving to hands.
+
+class Dealer
+state - Deck deck, Game game
+behavior - shuffle() - Will use Strategy pattern to use shuffling strategy at runtime
+dealCard() - will provides card to hand and update deck.
+
+class GameContext
+state - Dealer dealer, Game game, Players players
+states will be updated
+
+class Hand
+state- List<card>
+behavior - update(), clear(),remove()
+
+class Players
+state - name, hand
+
+class Game
+behavior- executeGame() - evaluate winner
+runhands() - Use the dealer to deal the cards.
+
+
+class BlackJackGame, class PokerGame, etc
+
